@@ -1,0 +1,52 @@
+button {
+  border-radius: 50px;
+}
+
+.full-body {
+  height: 100vh;
+  padding: 0;
+
+    background-image: url('https://image.freepik.com/vecteurs-libre/fond-blanc-hexagone-bleu-tech_1017-19366.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+.text-home  {
+  width: 70%;
+  margin-top: 9rem;
+  margin-left: 4.5rem;
+}
+
+.text-home h4 {
+  margin-top: 1.5rem;
+}
+
+.text-home button  {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+
+}
+
+
+.form-home {
+  background-color: rgba(255, 253, 253, 0.781);
+  width: 90%;
+  /*border: solid 1px ;*/
+  border-radius: 20px;
+  margin-top: 4rem;
+  padding: 3rem;
+
+  position: relative;
+  right: 100px;
+}
+
+
+@media screen and (max-width: 700px) {
+  .form-home {
+    position: relative;
+    left: 40px;
+    width: 80%;
+  }
+}

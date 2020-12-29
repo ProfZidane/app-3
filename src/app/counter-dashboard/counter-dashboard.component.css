@@ -1,0 +1,29 @@
+h3 {
+  font-weight: 100;
+}
+
+.data-card {
+  margin-top: 2rem;
+
+}
+
+.data-card div:first-child {
+  background-color: rgba(243, 243, 243, 0.849);
+  box-shadow: 1px 1px 5px #cccccc;
+}
+
+.clc-app button{
+  border-radius: 0;
+  height: 35px;
+}
+
+
+.content-data {
+  padding: 1.5rem;
+  height: 170px;
+}
+
+.value h1 {
+    margin-top: 3rem;
+    font-weight: 400;
+}

@@ -1,0 +1,15 @@
+.bord {
+  border: solid;
+}
+
+.banner-qr {
+  padding: 2rem;
+  background-color: rgba(243, 243, 243, 0.849);
+
+}
+
+.qr-btn {
+  border-radius: 0;
+  float: right;
+  width: 25%;
+}

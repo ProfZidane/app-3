@@ -1,0 +1,21 @@
+nav {
+  padding: 1rem;
+  background-color: transparent;
+}
+
+.nv-2 {
+  /*border: solid;*/
+
+}
+
+@media screen and (min-width: 700px) {
+  .nv-2 {
+    position: relative;
+    left: 60%;
+  }
+
+  .nv-2 li {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

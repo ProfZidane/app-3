@@ -1,0 +1,31 @@
+nav {
+  padding: 1rem;
+  background-color: transparent;
+}
+
+.nv-2 {
+  /*border: solid;*/
+
+}
+
+.logo-profile {
+  border: solid 1px;
+  border-radius: 100%;
+}
+
+.logo-profile img {
+  border-radius: 100%;
+}
+
+
+@media screen and (min-width: 700px) {
+  .nv-2 {
+    position: relative;
+    left: 75%;
+  }
+
+  .nv-2 li {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
