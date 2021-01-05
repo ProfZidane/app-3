@@ -10,6 +10,10 @@ import { NavbarDashboardComponent } from './navbar-dashboard/navbar-dashboard.co
 import { SidebarDashboardComponent } from './sidebar-dashboard/sidebar-dashboard.component';
 import { CounterDashboardComponent } from './counter-dashboard/counter-dashboard.component';
 import { QrDashboardComponent } from './qr-dashboard/qr-dashboard.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -20,11 +24,13 @@ import { QrDashboardComponent } from './qr-dashboard/qr-dashboard.component';
     NavbarDashboardComponent,
     SidebarDashboardComponent,
     CounterDashboardComponent,
-    QrDashboardComponent
+    QrDashboardComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

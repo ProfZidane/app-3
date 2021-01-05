@@ -1,0 +1,81 @@
+<div class="container-fluid">
+
+    <div class="banner">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container" align="center">
+          <h1 class="display-4">Formulaire d'inscription</h1>
+          <p class="lead">Rejoingez les applications ESATIC en remplissant cet formulaire ci-dessous.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <form method="POST">
+        <div class="row">
+          <div class="col">
+            <input type="text" name="last_name" [(ngModel)]="register.last_name" class="form-control" placeholder="Prénoms">
+          </div>
+          <div class="col">
+            <input type="text" name="first_name" [(ngModel)]="register.fisrt_name" class="form-control" placeholder="Nom">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <select name="filliere" [(ngModel)]="register.filliere" id="inputState" class="form-control" placeholder="fff">
+              <option value="{{ register.filliere }}">Choisir filière...</option>
+              <option value="srit">SRIT</option>
+              <option value="twin">TWIN</option>
+            </select>
+          </div>
+          <div class="col">
+            <select name="promo" [(ngModel)]="register.promo" id="inputState" class="form-control">
+              <option value="{{ register.promo }}">Choisir promotion...</option>
+              <option value="it07">it07</option>
+              <option value="it04">it04</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <input type="file" name="avatar" [(ngModel)]="register.avatar" class="form-control" placeholder="Photo">
+          </div>
+          <div class="col">
+            <input type="email" name="email" [(ngModel)]="register.email" class="form-control" placeholder="Adresse e-mail">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <input type="number" name="num" [(ngModel)]="register.num" class="form-control" placeholder="Numéro de téléphone">
+          </div>
+          <div class="col">
+            <input type="password" name="password" [(ngModel)]="register.password" class="form-control" placeholder="Mot de passe">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <input type="text" name="matricule" [(ngModel)]="register.matricule" class="form-control" placeholder="Matricule Esatic">
+          </div>
+          <div class="col">
+            <input class="form-check-input left" name="in_city" [(ngModel)]="register.in_city" (change)="CheckIfInCity(register.in_city)" type="checkbox" id="gridCheck">
+            <label class="form-check-label left-1" for="gridCheck">
+              Êtes-vous en cité ?
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col" *ngIf="VisibilityBed" >
+            <input type="number" name="chambre" [(ngModel)]="register.chambre" class="form-control" placeholder="Numéro de Chambre">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit" (click)="Validation()" >Valider</button>
+      </form>
+    </div>
+</div>
+
+<br><br><br>
