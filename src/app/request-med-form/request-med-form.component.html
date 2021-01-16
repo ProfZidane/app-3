@@ -1,0 +1,56 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid full-body">
+  <div class="row">
+
+    <div class="col-md-3 bg-primary sidebar">
+
+      <app-sidebar-dashboard></app-sidebar-dashboard>
+
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="container">
+        <h2 style="text-align:center;" class="pt-4">Traitement médical à distance</h2>
+        <small class="text-warning">Deux demandes simultanées sont autorisées !</small>
+        <form class="pt-4">
+
+          <div class="form-row pt-3">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Votre poids">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Votre taille">
+            </div>
+          </div>
+
+          <div class="form-row pt-3">
+            <div class="col mld">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Avez-vous une maladie spéciale ?</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Inscrivez cette maladie">
+            </div>
+          </div>
+
+          <div class="form-row pt-3">
+            <div class="col">
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="text-muted">Description du mal (ou des maux)</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+              </div>
+
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary btn-block">VALIDER</button>
+          <br>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

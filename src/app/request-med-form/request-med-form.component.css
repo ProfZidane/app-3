@@ -15,9 +15,19 @@
 }
 
 .sidebar {
-  height: calc(100vh - 10vh);
+  height: calc(100vh);
 }
 
+
+.mld input {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.mld label {
+  margin-left: 2.5rem;
+  margin-top: 0.6rem;
+}
 
 
 

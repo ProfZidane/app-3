@@ -15,10 +15,12 @@
 }
 
 .sidebar {
-  height: calc(100vh - 10vh);
+  height: calc(100vh);
 }
 
 
-
+.search-box {
+  height: 500px;
+}
 
 

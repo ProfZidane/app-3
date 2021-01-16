@@ -10,15 +10,35 @@
 
 }
 
+p {
+  white-space: nowrap;
+  width: 90%;
+  overflow: hidden;
+
+
+  text-overflow: ellipsis;
+}
+
 .bord {
   border: solid;
 }
 
 .sidebar {
-  height: calc(100vh - 10vh);
+  height: calc(100vh);
 }
 
 
+.cadre {
+  border: solid;
+}
 
 
+.continious {
+  box-shadow: 2px 2px 4px rgb(209, 207, 207);
+}
+
+.history {
+  height: 500px;
+  overflow: auto;
+}
 

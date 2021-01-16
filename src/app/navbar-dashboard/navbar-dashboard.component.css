@@ -1,6 +1,6 @@
 nav {
   padding: 1rem;
-  background-color: transparent;
+  background-color: rgb(255, 251, 251);
 }
 
 .nv-2 {
@@ -18,10 +18,18 @@ nav {
 }
 
 
+.ext-mgs {
+  /*white-space: nowrap;
+  text-overflow: ellipsis;*/
+  width: 5%;
+
+}
+
+
 @media screen and (min-width: 700px) {
   .nv-2 {
     position: relative;
-    left: 75%;
+    left: 55%;
   }
 
   .nv-2 li {
