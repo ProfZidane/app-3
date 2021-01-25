@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -12,23 +13,42 @@ export class SignUpComponent implements OnInit {
     fisrt_name : '',
     filliere : '',
     promo : '',
-    avatar : '',
+    avatar :  '' ,
     email : '',
     num : '',
     password : '',
     matricule : '',
     in_city : '',
-    chambre : ''
+    chambre : '',
+    created_at : new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    updated_at: ''
   };
   VisibilityBed = false;
-  constructor() { }
+  fileToUpload: File = null;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  Validation() {
-    console.log(this.register);
+  handleFile(files: FileList) {
+    this.fileToUpload = files.item(0);
+    console.log(this.fileToUpload);
+  }
 
+  Validation() {
+  const data = {
+    file : this.fileToUpload,
+    data : this.register
+  };
+  console.log(data);
+  this.authService.Register(data).subscribe(
+      (success) => {
+        console.log(success);
+      }, (err) => {
+        console.log(err);
+      }
+    );
   }
 
   CheckIfInCity(value) {

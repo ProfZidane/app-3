@@ -1,0 +1,18 @@
+.full-body {
+    height: calc(100vh - 10vh);
+    padding: 0;
+      /*
+      background-image: url('https://image.freepik.com/vecteurs-libre/fond-blanc-hexagone-bleu-tech_1017-19366.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;*/
+
+  }
+
+  .bord {
+    border: solid;
+  }
+
+  .sidebar {
+    height: calc(100vh - 10vh);
+  }
+

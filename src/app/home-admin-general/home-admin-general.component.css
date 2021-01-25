@@ -15,21 +15,10 @@
 }
 
 .sidebar {
-  height: calc(100vh);
+  height: calc(100vh - 10vh);
 }
 
 
-.search-box {
-  height: 500px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 1rem;
-}
 
-.box-info {
-  padding: 0;
-  margin-bottom: 1.5rem;
-  box-shadow: 1px 2px 2px rgb(218, 216, 216);
-}
 
 

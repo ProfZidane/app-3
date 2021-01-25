@@ -1,3 +1,8 @@
+import { PayStatComponent } from './pay-stat/pay-stat.component';
+import { PayListComponent } from './pay-list/pay-list.component';
+import { ListDemandCComponent } from './list-demand-c/list-demand-c.component';
+import { ListDemandNcComponent } from './list-demand-nc/list-demand-nc.component';
+import { HomeAdminGeneralComponent } from './home-admin-general/home-admin-general.component';
 import { ConsultationHistoryComponent } from './consultation-history/consultation-history.component';
 import { ConsultationCreateComponent } from './consultation-create/consultation-create.component';
 import { TraitmentValidedComponent } from './traitment-valided/traitment-valided.component';
@@ -71,6 +76,26 @@ const routes: Routes = [
   {
     path: 'consult-list',
     component: ConsultationHistoryComponent
+  },
+  {
+    path: 'admin',
+    component: HomeAdminGeneralComponent
+  },
+  {
+    path: 'list-request-nc-admin',
+    component: ListDemandNcComponent
+  },
+  {
+    path: 'list-request-c-admin',
+    component: ListDemandCComponent
+  },
+  {
+    path: 'list-credit-admin',
+    component: PayListComponent
+  },
+  {
+    path: 'stat-credit-admin',
+    component: PayStatComponent
   }
 ];
 

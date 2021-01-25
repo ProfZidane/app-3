@@ -1,3 +1,7 @@
+import { PayStatComponent } from './pay-stat/pay-stat.component';
+import { PayListComponent } from './pay-list/pay-list.component';
+import { ListDemandNcComponent } from './list-demand-nc/list-demand-nc.component';
+import { ListDemandCComponent } from './list-demand-c/list-demand-c.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -33,6 +37,13 @@ import { ConsultationCreateComponent } from './consultation-create/consultation-
 import { ConsultationHistoryComponent } from './consultation-history/consultation-history.component';
 import { NotificationPushComponent } from './notification-push/notification-push.component';
 import { NotificationHistoryComponent } from './notification-history/notification-history.component';
+import { ConsultFormComponent } from './consult-form/consult-form.component';
+import { HomeAdminGeneralComponent } from './home-admin-general/home-admin-general.component';
+import { SidenavAdminGeneralComponent } from './sidenav-admin-general/sidenav-admin-general.component';
+import { ConsultphAdminGeneralComponent } from './consultph-admin-general/consultph-admin-general.component';
+import { ConsultlnAdminGeneralComponent } from './consultln-admin-general/consultln-admin-general.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -63,13 +74,23 @@ import { NotificationHistoryComponent } from './notification-history/notificatio
     ConsultationCreateComponent,
     ConsultationHistoryComponent,
     NotificationPushComponent,
-    NotificationHistoryComponent
+    NotificationHistoryComponent,
+    ConsultFormComponent,
+    HomeAdminGeneralComponent,
+    SidenavAdminGeneralComponent,
+    ListDemandCComponent,
+    ListDemandNcComponent,
+    PayListComponent,
+    PayStatComponent,
+    ConsultphAdminGeneralComponent,
+    ConsultlnAdminGeneralComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
