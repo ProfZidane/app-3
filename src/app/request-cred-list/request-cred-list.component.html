@@ -23,18 +23,12 @@
                 <th>Date</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let recharge of rechargement" >
               <tr>
-                <td>1</td>
-                <td><b>79261619</b></td>
-                <td><b>15 000</b> FCFA</td>
-                <td>09/01/2020</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td><b>79261619</b></td>
-                <td><b>15 000</b> FCFA</td>
-                <td>09/01/2020</td>
+                <td>{{ recharge._id }}</td>
+                <td><b>{{ recharge.num }}</b></td>
+                <td><b>{{ recharge.somme | number}}</b> FCFA</td>
+                <td>{{ recharge.created_at }}</td>
               </tr>
             </tbody>
           </table>

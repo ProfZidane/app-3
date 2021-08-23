@@ -1,3 +1,4 @@
+import { CreditService } from './../services/credit.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +12,19 @@ export class RequestCredFormComponent implements OnInit {
   mtn;
   paypal;
   selected;
-  constructor() { }
+  form_data = {
+    author: '',
+    choice: '',
+    paypal: 'none',
+    num: '',
+    somme: '',
+    created_at: new Date().toLocaleString(),
+    updated_at: ''
+  };
+  success;
+  danger_alert;
+  success_alert;
+  constructor(private creditService: CreditService) { }
 
   ngOnInit(): void {
   }
@@ -48,6 +61,32 @@ export class RequestCredFormComponent implements OnInit {
     this.mtn = false;
     this.orange = false;
     this.moov = false;
+  }
+
+
+  ValidationForm() {
+      this.success = false;
+      let user = JSON.parse(localStorage.getItem('userData'));
+      this.form_data.author = user[0]._id;
+      this.form_data.choice = this.selected;
+      console.log(this.form_data);
+      this.creditService.setCredit(this.form_data).subscribe(
+        (success) => {
+          console.log(success);
+          this.success_alert = true;
+          this.danger_alert = false;
+          setTimeout( () => {
+            this.success = true;
+          }, 3000);
+        }, (err) => {
+          console.log(err);
+          this.success_alert = false;
+          this.danger_alert = true;
+          setTimeout( () => {
+            this.success = true;
+          }, 3000);
+        }
+      )
   }
 
 }

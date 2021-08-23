@@ -1,1 +1,38 @@
-<p>notification-push works!</p>
+<mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
+
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid full-body">
+  <div class="row">
+
+    <div class="col-md-3 bg-primary sidebar">
+
+      <app-sidenav-admin-general></app-sidenav-admin-general>
+
+    </div>
+
+    <div class="col-md-9">
+
+      <br>
+
+      <div class="alert alert-success" *ngIf="success_alert" >
+        Votre message a bien été publier !
+      </div>
+      <div class="alert alert-danger" *ngIf="danger_alert" >
+        Une erreur est survenue. Veuillez réessayer plus tard !
+      </div>
+        <h2 class="mt-4">INFORMATIONS PUBLIQUES</h2>
+
+        <div class="col mt-5">
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="text-muted">Message</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="message" [(ngModel)]="Notification.message" rows="4"></textarea>
+          </div>
+          <button class="btn btn-primary btn-block" (click)="CreateService()">Envoyez</button>
+        </div>
+
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.form-admin {
+  background-color: #007bff;
+  padding: 4rem;
+  margin-top: 5rem;
+  width: 100%;
+  border-radius: 20px;
+
+}
+
+.bord{
+  border: solid;
+}
+
+
+#body {
+  background: url('../../assets/88129926_2578313982383144_1810299032745017344_o.jpg');
+  background-size: cover;
+}

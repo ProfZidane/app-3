@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
+
 <app-navbar-dashboard></app-navbar-dashboard>
 
 <div class="container-fluid full-body">
@@ -10,20 +12,32 @@
     </div>
 
     <div class="col-md-9">
-
+      <br>
+      <div class="alert alert-success" *ngIf="success_alert" >
+        Votre confirmation est validé. Bonne arrivée à l'ESATIC !
+      </div>
+      <div class="alert alert-warning" *ngIf="warning_alert" >
+        Votre position indique que vous êtes hors de l'ESATIC !
+      </div>
+      <div class="alert alert-danger" *ngIf="danger_alert" >
+        Une erreur s'est produite. Veuillez réessayer plus tard !
+      </div>
       <h2 class="pt-4">Demandes de sorties</h2>
-        <div class="container pt-2">
+        <div class="container pt-2" *ngIf="req_not_done.length > 0" >
           <div class="card continious">
             <div class="card-body">
-              <h5 class="card-title">Demande n°@335 du <b>2020-02-18</b> &nbsp;&nbsp; <span class="badge badge-warning text-light">En cours</span></h5>
+              <h5 class="card-title">Demande du <b>{{ req_not_done[0].created_at }}</b> &nbsp;&nbsp; <span class="badge badge-warning text-light">En cours</span></h5>
               <p class="card-text">
-                Sortie pour aller voir ma famille et mes amis pour le weekend
+                {{ req_not_done[0].motivation }}
               </p>
               <hr>
-              <a href="#" class="card-link btn btn-muted">Voir détails</a>
-              <a href="#" class="card-link btn btn-primary">Confirmer retour</a>
+              <a (click)='getDetail(req_not_done[0]._id)' data-toggle="modal" data-target="#exampleModalD1" class="card-link btn btn-muted">Voir détails</a>
+              <a (click)='TrueConfirmation(req_not_done[0]._id)' class="card-link btn btn-primary text-light">Confirmer retour</a>
             </div>
           </div>
+        </div>
+        <div class="container pt-2 add-decor-text" align="center" *ngIf="req_not_done.length <= 0" >
+          Aucune demande en cours !
         </div>
 
         <br>
@@ -32,21 +46,25 @@
 
         <br>
 
-        <div class="container pt-2 history">
+        <div class="container pt-2 history add-decor-text" align="center" *ngIf="req_done && req_done.length <= 0" >
+            Aucune demande n'a été validé !
+        </div>
+        <!-- separation -->
+        <div class="container pt-2 history" *ngIf="req_done && req_done.length > 0" >
           <div class="card ">
             <div class="card-body">
-              <h5 class="card-title">Demande n°@335 du <b>2020-02-18</b> &nbsp;&nbsp; <span class="badge badge-success text-light">Validé</span></h5>
+              <h5 class="card-title">Demande du <b>{{ req_done[0].created_at }}</b> &nbsp;&nbsp; <span class="badge badge-success text-light">Validé</span></h5>
               <p class="card-text">
                 Sortie pour aller voir ma famille et mes amis pour le weekend
               </p>
               <hr>
-              <a href="#" class="card-link btn btn-muted">Voir détails</a>
+              <a (click)='getDetail(req_done[0]._id)' data-toggle="modal" data-target="#exampleModal2" class="card-link btn btn-muted">Voir détails</a>
             </div>
           </div>
 
           <br>
 
-          <div class="card ">
+          <!--<div class="card ">
             <div class="card-body">
               <h5 class="card-title">Demande n°@335 du <b>2020-02-18</b> &nbsp;&nbsp;<span class="badge badge-success text-light">Validé</span></h5>
               <p class="card-text">
@@ -94,11 +112,121 @@
               <hr>
               <a href="#" class="card-link btn btn-muted">Voir détails</a>
             </div>
-          </div>
+          </div>-->
           <br>
         </div>
 
     </div>
 
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalD1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Détail Demande</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="../../assets/138824226_2842612255953314_3639105653464004056_o.jpg" height="100%" width="100%" alt="">
+          </div>
+          <div class="col-md-6" *ngIf="detail && user" >
+            <h1 class="text-primary">{{ user.first_name + ' ' + user.last_name }}</h1>
+           <p class="text-primary">Matricule: <small class="text-dark"> {{ user.matricule }}</small></p>
+            <br>
+            <p class="text-primary">
+              Numéro Tuteur : <span class="text-dark">{{ detail.number_tutor }}</span>
+            </p>
+            <div class="row">
+              <div class="col-md-4">
+                <p class="text-primary">
+                  Date de départ : <span class="text-dark"> {{ detail.date_started }}</span>
+                </p>
+              </div>
+              <div class="col-md-4">
+                <p class="text-primary">
+                  Date de retour : <span class="text-dark">{{ detail.date_finish }}</span>
+                </p>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <p class="text-primary">Motivation</p>
+            </div>
+            <div class="row">
+              <p>
+                {{ detail.motivation }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Détail Demande</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="https://image.freepik.com/free-vector/welcome-back-school-lettering-with-crossed-pencils_1262-14724.jpg" height="100%" width="100%" alt="">
+          </div>
+          <div class="col-md-6" *ngIf="detail && user" >
+            <h1 class="text-primary">{{ user.first_name + ' ' + user.last_name }}</h1>
+           <p class="text-primary">Matricule: <small class="text-dark"> {{ user.matricule }}</small></p>
+            <br>
+            <p class="text-primary">
+              Numéro Tuteur : <span class="text-dark">{{ detail.number_tutor }}</span>
+            </p>
+            <div class="row">
+              <div class="col-md-4">
+                <p class="text-primary">
+                  Date de départ : <span class="text-dark"> {{ detail.date_started }}</span>
+                </p>
+              </div>
+              <div class="col-md-4">
+                <p class="text-primary">
+                  Date de retour : <span class="text-dark">{{ detail.date_finish }}</span>
+                </p>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <p class="text-primary">Motivation</p>
+            </div>
+            <div class="row">
+              <p>
+                {{ detail.motivation }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
   </div>
 </div>

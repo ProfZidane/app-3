@@ -13,5 +13,20 @@
   }
 
   .sidebar {
-    height: calc(100vh - 10vh);
+    height: calc(100vh);
   }
+
+
+.cadre {
+  margin: 0.2rem;
+}
+
+.stat-card {
+  /*margin-right: 0.1rem;*/
+  padding: 2rem;
+}
+
+.stat-card h2 {
+  font-size: 40px;
+}
+

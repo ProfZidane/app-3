@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
+
 <div class="container-fluid full-body">
   <!-- nav bar component -->
   <app-navbar></app-navbar>
@@ -6,34 +8,40 @@
 
         <div class="col-md-8">
             <div class="text-home">
-              <h1 class="text-primary">ESATIC-APP</h1>
+              <h1 class="text-primary" style="font-size:45px;">ESATIC-APP</h1>
               <h4 class="text-dark">L'université à la pointe de la technologie</h4>
               <p class="text-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo omnis in ullam aliquam quae aspernatur itaque blanditiis beatae necessitatibus, ex hic ipsam laboriosam laborum non voluptas aut obcaecati consequatur facilis!
+                Cette université dispose de plusieurs applications pour la gestion de l'ensemble des activités universitaires.
               </p>
               <button class="btn btn-primary round">COMMENCER</button>
-              <button class="btn btn-light">SIGNALER UN PROBLEME</button>
+              <button class="btn btn-secondary">SIGNALER UN PROBLEME</button>
             </div>
         </div>
 
         <!-- form login-->
         <div class="col-md-4">
           <div class="form-home bg-primary">
-            <form>
+            <div class="alert alert-danger" *ngIf="danger_alert" >
+              Aucun de nos utilisateurs ont un tel matricule !
+            </div>
+            <div class="alert alert-warning" *ngIf="warning_alert" >
+              Votre mot de passe est incorrecte !
+            </div>
+            <form method="POST" action="">
               <div class="form-group">
-                <label class="text-light" for="exampleInputEmail1">Adresse Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre email">
+                <label class="text-light" for="exampleInputEmail1">Matricule ESATIC</label>
+                <input type="text" class="form-control" name="matricule" [(ngModel)]="Login.matricule" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre matricule">
 
               </div>
               <div class="form-group">
                 <label class="text-light" for="exampleInputPassword1">Mot de passe</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrez votre mot de passe">
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="Login.password" placeholder="Entrez votre mot de passe">
               </div>
               <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label text-light" for="exampleCheck1">Se rappeler de moi</label>
               </div>
-              <button type="submit" routerLink="/dashboard" class="btn btn-light">Valider</button>
+              <button type="submit"  (click)="LoginForm()" class="btn btn-light">Valider</button>
             </form>
           </div>
         </div>

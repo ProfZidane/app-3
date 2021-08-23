@@ -9,7 +9,7 @@ nav {
 }
 
 .logo-profile {
-  border: solid 1px;
+  border: solid 1px transparent;
   border-radius: 100%;
 }
 

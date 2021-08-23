@@ -12,4 +12,8 @@ export class ConsultMedComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToConsulting() {
+    location.href = '/consult-form';
+  }
+
 }

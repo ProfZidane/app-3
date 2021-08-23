@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
+
 <app-navbar-dashboard></app-navbar-dashboard>
 
 <div class="container-fluid full-body">
@@ -12,28 +14,30 @@
     <div class="col-md-9">
 
       <div class="container">
+        <br>
+        <div class="alert alert-success" *ngIf="success_alert" >
+          Votre rechargement a été effectuer avec succès !
+        </div>
+        <div class="alert alert-danger" *ngIf="danger_alert" >
+          Une erreur s'est produite. Veuillez réessayer plus tard !
+        </div>
         <h2 style="text-align:center;" class="pt-4">Demande de crédit restaurant</h2>
         <br><br>
         <small class="text-secondary">Sélectionnez un moyen de paiement : </small>
         <br><br>
         <div class="row">
-          <div class="col-md-3" align="center">
+          <div class="col-md-4" align="center">
             <img src="../../assets/orange.png" (click)="ChoiceOrange()" width="100%" height="150" alt="">
             <i class="material-icons text-success choice" *ngIf="orange" >beenhere</i>
           </div>
-          <div class="col-md-3" align="center">
+          <div class="col-md-4" align="center">
             <img src="../../assets/mtn.jpg" (click)="ChoiceMtn()" width="100%" height="150" alt="">
             <i class="material-icons text-success choice" *ngIf="mtn" >beenhere</i>
 
           </div>
-          <div class="col-md-3" align="center">
+          <div class="col-md-4" align="center">
             <img src="../../assets/moov.jpg" (click)="ChoiceMoov()" width="100%" height="150" alt="">
             <i class="material-icons text-success choice" *ngIf="moov" >beenhere</i>
-
-          </div>
-          <div class="col-md-3" align="center">
-            <img src="../../assets/paypal.png" (click)="ChoicePaypal()" width="100%" height="150" alt="">
-            <i class="material-icons text-success choice" *ngIf="paypal" >beenhere</i>
 
           </div>
         </div>
@@ -44,14 +48,14 @@
           <form class="col-12 pt-4">
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Numéro de téléphone">
+                <input type="text" class="form-control" name="num" [(ngModel)]="form_data.num" placeholder="Numéro de téléphone">
               </div>
               <div class="col">
-                <input type="number" class="form-control" placeholder="Somme (en FCFA)">
+                <input type="number" class="form-control" name="somme" [(ngModel)]="form_data.somme" placeholder="Somme (en FCFA)">
               </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary btn-block">VALIDER</button>
+            <button type="submit" class="btn btn-primary btn-block" (click)="ValidationForm()">VALIDER</button>
             <br>
           </form>
         </div>
@@ -60,14 +64,14 @@
           <form class="col-12 pt-4">
             <div class="form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Nom paypal">
+                <input type="text" class="form-control" name="num" [(ngModel)]="form_data.num" placeholder="Nom paypal">
               </div>
               <div class="col">
-                <input type="number" class="form-control" placeholder="Somme (en FCFA)">
+                <input type="number" class="form-control" name="somme" [(ngModel)]="form_data.somme" placeholder="Somme (en FCFA)">
               </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary btn-block">VALIDER</button>
+            <button type="submit" class="btn btn-primary btn-block" (click)="ValidationForm()">VALIDER</button>
             <br>
           </form>
         </div>

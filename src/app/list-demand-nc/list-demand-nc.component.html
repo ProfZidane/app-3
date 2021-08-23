@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
+
 <app-navbar-dashboard></app-navbar-dashboard>
 
 <div class="container-fluid full-body">
@@ -12,6 +14,10 @@
 
     <div class="col-md-9">
       <br>
+      <div class="alert alert-success" *ngIf="success_alert" >
+        Demande d'explications envoyé !
+      </div>
+      <br>
       <h3>LISTE DES DEMANDES NON CONFIRMEES</h3>
         <br>
         <br>
@@ -22,35 +28,100 @@
                 <th>Nom </th>
                 <th>Prenom</th>
                 <th>Date de sortie</th>
-                <th>Heure de sortie</th>
                 <th>Date de retour</th>
                 <th></th>
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let req of real_data" >
               <tr>
-                 <td>Mohamed</td>
-                 <td>Zidane</td>
-                 <td>15-01-2020</td>
-                 <td>15h30</td>
-                 <td>17-01-2020</td>
-                <td><button class="btn btn-warning">Voir Plus</button></td>
-                <td><button class="btn btn-info">Explications</button></td>
+                <td>{{ req.user.first_name }}</td>
+                <td>{{ req.user.last_name }}</td>
+                <td>{{ req.date_started }}</td>
+                <td>{{ req.date_finish }}</td>
+                <td><button (click)="getDetail(req._id)" data-toggle="modal" data-target="#exampleModalDetail"  class="btn btn-warning">Voir Plus</button></td>
+                <td><button class="btn btn-info" (click)='SendExplication(req.user._id)'>Explications</button></td>
               </tr>
-
-              <tr>
-                <td>Mohamed</td>
-                <td>Zidane</td>
-                <td>15-01-2020</td>
-                <td>15h30</td>
-                <td>17-01-2020</td>
-                <td><button class="btn btn-warning">Voir Plus</button></td>
-                <td><button class="btn btn-info">Explications</button></td>
-             </tr>
 
             </tbody>
           </table>
           <br>
 
     </div>
+
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Détail Demande</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="detail && user">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="http://localhost:3000/uploads/{{ user.avatar }}" height="100%" width="100%" alt="">
+          </div>
+          <div class="col-md-6" *ngIf="detail && user" >
+            <h1 class="text-primary">{{ user.first_name + ' ' + user.last_name }}</h1>
+           <p class="text-primary">Matricule: <small class="text-dark"> {{ user.matricule }}</small></p>
+            <br>
+            <p class="text-primary">
+              Numéro Tuteur : <span class="text-dark">{{ detail.number_tutor }}</span>
+            </p>
+            <div class="row">
+              <div class="col-md-4">
+                <p class="text-primary">
+                  Date de départ : <span class="text-dark"> {{ detail.date_started }}</span>
+                </p>
+              </div>
+              <div class="col-md-4">
+                <p class="text-primary">
+                  Date de retour : <span class="text-dark">{{ detail.date_finish }}</span>
+                </p>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <p class="text-primary">Motivation</p>
+            </div>
+            <div class="row">
+              <p>
+                {{ detail.motivation }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalExplication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Explication de retard</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div>

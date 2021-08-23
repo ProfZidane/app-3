@@ -1,9 +1,12 @@
+import { AuthService } from './services/auth.service';
+import { SickListComponent } from './sick-list/sick-list.component';
 import { PayStatComponent } from './pay-stat/pay-stat.component';
 import { PayListComponent } from './pay-list/pay-list.component';
 import { ListDemandNcComponent } from './list-demand-nc/list-demand-nc.component';
 import { ListDemandCComponent } from './list-demand-c/list-demand-c.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +17,7 @@ import { NavbarDashboardComponent } from './navbar-dashboard/navbar-dashboard.co
 import { SidebarDashboardComponent } from './sidebar-dashboard/sidebar-dashboard.component';
 import { CounterDashboardComponent } from './counter-dashboard/counter-dashboard.component';
 import { QrDashboardComponent } from './qr-dashboard/qr-dashboard.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+
 import { FormsModule } from '@angular/forms';
 import { RequestOutFormComponent } from './request-out-form/request-out-form.component';
 import { RequestOutListComponent } from './request-out-list/request-out-list.component';
@@ -43,6 +46,11 @@ import { SidenavAdminGeneralComponent } from './sidenav-admin-general/sidenav-ad
 import { ConsultphAdminGeneralComponent } from './consultph-admin-general/consultph-admin-general.component';
 import { ConsultlnAdminGeneralComponent } from './consultln-admin-general/consultln-admin-general.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { ChartsModule } from 'ng2-charts';
+import { StatAdminHbgComponent } from './stat-admin-hbg/stat-admin-hbg.component';
 
 
 @NgModule({
@@ -55,7 +63,7 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarDashboardComponent,
     CounterDashboardComponent,
     QrDashboardComponent,
-    SignUpComponent,
+
     RequestOutFormComponent,
     RequestOutListComponent,
     RequestCredFormComponent,
@@ -83,16 +91,25 @@ import { HttpClientModule } from '@angular/common/http';
     PayListComponent,
     PayStatComponent,
     ConsultphAdminGeneralComponent,
-    ConsultlnAdminGeneralComponent
+    ConsultlnAdminGeneralComponent,
+    SickListComponent,
+    LoginAdminComponent,
+    StatAdminHbgComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     DataTablesModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule,
+    NgxQRCodeModule,
+    ChartsModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

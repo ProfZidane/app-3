@@ -1,6 +1,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">ESATIC-APP</a>
+  <a class="navbar-brand" href="/dashboard" *ngIf="!isRole" >ESATIC-APP</a>
+  <a class="navbar-brand" href="/admin" *ngIf="isRole && role === 'general'" >ESATIC-APP</a>
+  <a class="navbar-brand" href="/dashboard-med" *ngIf="isRole && role === 'medical'" >ESATIC-APP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,48 +10,62 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto nv-2">
 
-      <li class="nav-item dropdown" style="margin-right: 4rem;">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="material-icons text-primary">mail</i>(2)
+      <li class="nav-item dropdown" style="margin-right: 4rem;" *ngIf="!isRole" >
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="messages" >
+          <i class="material-icons text-primary">mail</i>({{ messages.length }})
           <!--<i class="material-icons">notifications_active</i>-->
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">
-              <b>KADJO</b>: <small style="font-style: italic;">Bonjour chèr étudiantddddeddddddddddddddddddd</small>
+        <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item"  *ngFor="let message of messages">
+              <b>KADJO</b>: <small style="font-style: italic;"  data-toggle="modal" data-target="#exampleModalExplication" (click)="DetailMessage(message)">{{ message.message | slice:0:34 }}...</small>
           </a>
+          <a class="dropdown-item"  *ngIf="messages.length <= 0" >
+            <small style="font-style: italic;" data-toggle="modal" data-target="#exampleModalExplication">
+              Aucun message
+            </small>
+        </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">
-            <b>KADJO</b>: <small style="font-style: italic;">Bonjour chèr étudiantddddeddddddddddddddddddd</small>
-          </a>
+
         </div>
 
       </li>
 
-      <li class="nav-item dropdown" style="margin-right: 4rem;">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="material-icons text-primary">notifications_active</i>(2)
-          <!--<i class="material-icons">notifications_active</i>-->
+      <!--<li class="nav-item dropdown" style="margin-right: 4rem;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="notifications" >
+          <i class="material-icons text-primary">notifications_active</i>({{ counter_notif.length }})
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Vous avez une notification médicale</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Vous avez une notification médicale</a>
+          <a class="dropdown-item" href="#" *ngFor="let notif of notifications"  >
+            <span *ngIf="notif.type === 'medical' && notif.status === 0" (click)='seenNotif(notif)' data-toggle="modal" data-target="#exampleModaliNFORM">
+              Vous avez une notification médicale &nbsp;&nbsp;<span style="font-size:2px" class="badge badge-primary">Nouveau</span>
+            </span>
+            <span *ngIf="notif.type === 'general' && notif.status === 0" (click)='seenNotif(notif)' data-toggle="modal" data-target="#exampleModaliNFORM">
+              Vous avez une notification d'information &nbsp;&nbsp;<span class="badge badge-primary">Nouveau</span>
+            </span>
+            <span *ngIf="notif.type === 'medical' && notif.status === 1" (click)="OPEN(notif)" data-toggle="modal" data-target="#exampleModaliNFORM">
+              Vous avez une notification médicale &nbsp;&nbsp;
+            </span>
+            <span *ngIf="notif.type === 'general' && notif.status === 1" (click)="OPEN(notif)" data-toggle="modal" data-target="#exampleModaliNFORM">
+              Vous avez une notification d'information &nbsp;&nbsp;
+            </span>
+            <div class="dropdown-divider"></div>
+          </a>
         </div>
-      </li>
+      </li>-->
 
 
       <li class="nav-item logo-profile">
-        <img src="https://cdn.pixabay.com/photo/2017/02/25/22/04/user-icon-2098873_960_720.png" height="40" width="40" alt="">
+        <img src="http://localhost:3000/uploads/{{ User_info.avatar }}" height="40" width="40" alt="">
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Mohamed zidane
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="User_info">
+          {{ User_info.first_name + ' ' + User_info.last_name }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Voir le profil</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Voir le profil</a>
           <a class="dropdown-item" href="#">Contactez-nous</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" href="#">Déconnexion</a>
+          <a class="dropdown-item text-danger" (click)="Logout()">Déconnexion</a>
         </div>
       </li>
 
@@ -60,3 +76,104 @@
     </form>-->
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informations Etudiants</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="http://localhost:3000/uploads/{{ User_info.avatar }}" width="100%" height="100%" alt="">
+          </div>
+          <div class="col-md-6">
+            <br>
+            <div class="row">
+              <h1 class="text-primary" style="font-size: 40px;">{{ User_info.first_name + ' ' + User_info.last_name }} </h1>
+            </div>
+            <br><br>
+            <div class="row">
+              <h3 class="text-primary">Matricule : <span style="font-size: medium;color:black;text-transform:uppercase;">{{ User_info.matricule }}</span></h3>
+            </div>
+            <div class="row">
+              <h3 class="text-primary">Fillière : <span style="font-size: medium;color:black;text-transform:uppercase;">{{ User_info.filliere }}</span></h3>
+            </div>
+            <div class="row">
+              <h3 class="text-primary">Promotion : <span style="font-size: medium;color:black;text-transform:uppercase;">{{ User_info.promo }}</span> </h3>
+            </div>
+            <div class="row">
+              <h3 class="text-primary"> Numéro de téléphone : <span style="font-size: medium;color:black;text-transform:uppercase;">{{ User_info.num }}</span> </h3>
+            </div><div class="row">
+              <h3 class="text-primary">Adresse e-mail : <span style="font-size: medium;color:black;text-transform:uppercase;">{{ User_info.email }}</span> </h3>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalExplication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informations Etudiants</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <h2 class="text-danger">AVERTISSEMENT POUR RETOUR NON CONFIRME</h2>
+        <div class="container">
+            <p *ngIf="details" >
+              {{ details }}
+            </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModaliNFORM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informations Etudiants</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <h2 class="text-danger">INFORMATIONS</h2>
+        <div class="container">
+            <p *ngIf="lecture" >
+              {{ lecture }}
+            </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>

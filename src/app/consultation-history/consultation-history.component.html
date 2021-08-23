@@ -1,1 +1,42 @@
-<p>consultation-history works!</p>
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid full-body">
+  <div class="row">
+
+    <div class="col-md-3 bg-primary sidebar">
+
+      <app-sidenav-admin-med></app-sidenav-admin-med>
+
+    </div>
+
+    <div class="col-md-9">
+
+      <br>
+      <br>
+      <table datatable class="row-border hover">
+          <thead>
+            <tr>
+              <th>Nom </th>
+              <th>Prenom</th>
+              <th>Taille</th>
+              <th>Poids</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let req of real_data" >
+            <tr>
+               <td>{{ req.user.first_name }}</td>
+               <td>{{ req.user.last_name }}</td>
+               <td>{{ req.height }}</td>
+               <td>{{ req.weight }}</td>
+               <td>{{ req.description }}</td>
+            </tr>
+
+
+          </tbody>
+        </table>
+
+    </div>
+
+  </div>
+</div>

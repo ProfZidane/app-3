@@ -1,0 +1,51 @@
+
+
+.full-body {
+  height: calc(100vh - 10vh);
+  padding: 0;
+    /*
+    background-image: url('https://image.freepik.com/vecteurs-libre/fond-blanc-hexagone-bleu-tech_1017-19366.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;*/
+
+}
+
+.bord {
+  border: solid;
+}
+
+.sidebar {
+  height: calc(100vh);
+}
+
+
+.cadre {
+  border: solid;
+}
+
+
+.continious {
+  box-shadow: 2px 2px 4px rgb(209, 207, 207);
+}
+
+.history {
+  height: 500px;
+  overflow: auto;
+}
+
+.add-decor-text {
+  font-size: 20px;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #007bff !important;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+  border-radius: 2px;
+}
+

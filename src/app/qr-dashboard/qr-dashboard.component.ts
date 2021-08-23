@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CreditService } from './../services/credit.service';
 
 @Component({
   selector: 'app-qr-dashboard',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qr-dashboard.component.css']
 })
 export class QrDashboardComponent implements OnInit {
-
-  constructor() { }
+Compte;
+  constructor(private creditService: CreditService) { }
 
   ngOnInit(): void {
+    this.getCompte();
+  }
+
+  getCompte() {
+    const user = JSON.parse(localStorage.getItem('userData'));
+    this.creditService.getCompte(user[0]._id).subscribe(
+      (data) => {
+        console.log(data);
+        this.Compte = JSON.stringify(data);
+      }, (err) => {
+        console.log(err);
+      }
+    );
   }
 
 }

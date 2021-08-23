@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
+
 <app-navbar-dashboard></app-navbar-dashboard>
 
 <div class="container-fluid full-body">
@@ -12,61 +14,49 @@
     <div class="col-md-9">
 
       <div class="container">
+        <br>
+        <div class="alert alert-success" *ngIf="success_alert" >
+          Votre demande a été réceptionner !
+        </div>
+        <div class="alert alert-danger" *ngIf="danger_alert" >
+          Une erreur est survenue. Veuillez réessayer plus tard !
+        </div>
+        <div class="alert alert-warning" *ngIf="warning_alert" >
+          Une demande de vous est déjà en cours !
+        </div>
         <h2 style="text-align:center;" class="pt-4">Formulaire de sortie de cité</h2>
         <form class="pt-4">
-          <div class="form-row">
+          <div class="form-row pt-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Nom">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Prénoms">
+              <input type="text" class="form-control" placeholder="Numéro d'un parent ou tuteur" name="number_tutor"  [(ngModel)]="OutInfo.number_tutor">
             </div>
           </div>
           <div class="form-row pt-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Fillière">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Classe">
-            </div>
-          </div>
-          <div class="form-row pt-3">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Numéro de téléphone">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Numéro d'un parent ou tuteur">
-            </div>
-          </div>
-          <div class="form-row pt-3">
-            <div class="col">
-              <input type="number" class="form-control" placeholder="Numéro de chambre">
-            </div>
-            <div class="col">
-              <input type="number" class="form-control" placeholder="Numéro de lit">
+              <input type="number" class="form-control" placeholder="Numéro de lit" name="bed_number"  [(ngModel)]="OutInfo.bed_number">
             </div>
           </div>
           <div class="form-row pt-3">
             <div class="col">
               <label for="exampleFormControlTextarea1" class="text-muted">Date de départ</label>
-              <input type="date" class="form-control" placeholder="Date de départ">
+              <input type="date" class="form-control" placeholder="Date de départ" name="date_started"  [(ngModel)]="OutInfo.date_started">
             </div>
             <div class="col">
               <label for="exampleFormControlTextarea1" class="text-muted">Date de retour</label>
-              <input type="date" class="form-control" placeholder="Date de retour">
+              <input type="date" class="form-control" placeholder="Date de retour" name="date_finish"  [(ngModel)]="OutInfo.date_finish">
             </div>
           </div>
           <div class="form-row pt-3">
             <div class="col">
               <div class="form-group">
                 <label for="exampleFormControlTextarea1" class="text-muted">Motivation de sortie</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="motivation" [(ngModel)]="OutInfo.motivation"></textarea>
               </div>
 
             </div>
           </div>
           <br>
-          <button type="submit" class="btn btn-primary btn-block">VALIDER</button>
+          <button type="submit" class="btn btn-primary btn-block" (click)="ValidationForm()">VALIDER</button>
           <br>
         </form>
       </div>

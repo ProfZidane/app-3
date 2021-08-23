@@ -1,3 +1,9 @@
+import { NotificationHistoryComponent } from './notification-history/notification-history.component';
+import { NotificationPushComponent } from './notification-push/notification-push.component';
+import { Stat1AdminMedComponent } from './stat1-admin-med/stat1-admin-med.component';
+import { StatAdminHbgComponent } from './stat-admin-hbg/stat-admin-hbg.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { SickListComponent } from './sick-list/sick-list.component';
 import { PayStatComponent } from './pay-stat/pay-stat.component';
 import { PayListComponent } from './pay-list/pay-list.component';
 import { ListDemandCComponent } from './list-demand-c/list-demand-c.component';
@@ -15,10 +21,10 @@ import { RequestCredFormComponent } from './request-cred-form/request-cred-form.
 import { RequestOutFormComponent } from './request-out-form/request-out-form.component';
 import { RequestOutListComponent } from './request-out-list/request-out-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -29,10 +35,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent
   },
-  {
-    path: 'sign-up',
-    component: SignUpComponent
-  },
+
   {
     path: 'list-exit-request',
     component: RequestOutListComponent
@@ -96,7 +99,30 @@ const routes: Routes = [
   {
     path: 'stat-credit-admin',
     component: PayStatComponent
-  }
+  },
+  {
+    path: 'list-medicalph-admin',
+    component: SickListComponent
+  },
+  {
+    path: 'admin-login',
+    component: LoginAdminComponent
+  }, {
+    path: 'stat-hbg',
+    component: StatAdminHbgComponent
+  },
+  {
+    path: 'stat-med',
+    component: Stat1AdminMedComponent
+  },
+   {
+     path: 'notification-push',
+     component: NotificationPushComponent
+   },
+   {
+     path: 'notification-history',
+     component: NotificationHistoryComponent
+   }
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" *ngIf="Compte" >
     <div class="col-md-4 data-card">
       <div class="container ">
         <div class="row content-data">
@@ -8,8 +8,11 @@
             <h3>Crédits</h3>
           </div>
 
-          <div class="row value">
-            <h1>10 000 FCFA</h1>
+          <div class="row value" *ngIf="Compte">
+            <h1>{{ Compte.somme }} FCFA</h1>
+          </div>
+          <div class="row value" *ngIf="!Compte">
+            <h1>0 FCFA</h1>
           </div>
         </div>
         <div class="row clc-app" align="center">
@@ -26,7 +29,7 @@
           </div>
 
           <div class="row value">
-            <h1>10 </h1>
+            <h1>{{ Out }}</h1>
           </div>
         </div>
         <div class="row clc-app" align="center">
@@ -42,8 +45,8 @@
             <h3>Status</h3>
           </div>
 
-          <div class="row value">
-            <h1>Favorable</h1>
+          <div class="row value" *ngIf="Status" >
+            <h1>{{ Status }}</h1>
           </div>
 
         </div>

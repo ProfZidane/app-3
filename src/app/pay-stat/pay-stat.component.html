@@ -12,6 +12,73 @@
 
     <div class="col-md-9">
       <br>
-        <h3>STATISTIQUE DES PAIEMENTS</h3>
+        <h3>STATISTIQUE DES REPAS</h3>
+        <br><br>
+
+        <div class="row cadre">
+          <div class="col-md-4 stat-card bg-secondary" *ngIf="all" >
+            <h1 class="text-light" style="font-weight:200">Total des repas : </h1>
+            <h2 class="text-light" style="font-weight:200">{{ all }}</h2>
+            <p class="text-light"><b>Somme total :</b> &nbsp; {{ (morning * 100) + (night * 200) }} Fcfa</p>
+          </div>
+          <div class="col-md-4 stat-card bg-warning" *ngIf="morning" >
+            <h1 class="text-light" style="font-weight:200">Repas du matin</h1>
+            <h2 class="text-light" style="font-weight:200">{{ morning }}</h2>
+            <p class="text-light"><b>Somme total :</b> &nbsp;{{ morning * 100 }} Fcfa</p>
+          </div>
+          <div class="col-md-4 stat-card bg-success" >
+            <h1 class="text-light" style="font-weight:200">Repas de midi/soir</h1>
+            <h2 class="text-light" style="font-weight:200">{{ night }}</h2>
+            <p class="text-light"><b>Somme total :</b> &nbsp;{{ night * 200 }} Fcfa</p>
+          </div>
+        </div>
+
+        <br><br>
+
+        <div class="row" style="padding: 1rem;" *ngIf="midi && soir" >
+          <h2 style="font-weight:400;">Détails des comptes</h2>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+
+          <p>
+            Nombre de plats du matin : <b>  {{ morning }}</b>
+          </p>
+            </div>
+            <div class="col-md-6">
+              <p>
+                Somme total des plats du matin : <b>{{ morning * 100 }} Fcfa</b>
+              </p>
+            </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+
+        <p>
+          Nombre de plats de midi :  <b>{{ midi.length }}</b>
+        </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Somme total des plats de midi : <b>{{ midi.length * 200 }} Fcfa</b>
+            </p>
+          </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+
+      <p>
+        Nombre de plats du soir :  <b>{{ soir.length }}</b>
+      </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            Somme total des plats du soir : <b>{{ soir.length * 200 }} Fcfa</b>
+          </p>
+        </div>
+
+    </div>
 
     </div>
