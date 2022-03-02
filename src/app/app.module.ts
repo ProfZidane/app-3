@@ -51,6 +51,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { ChartsModule } from 'ng2-charts';
 import { StatAdminHbgComponent } from './stat-admin-hbg/stat-admin-hbg.component';
+import { DashboardContentComponent } from './dashboard-content/dashboard-content.component';
+import { AdminContentComponent } from './admin-content/admin-content.component';
 
 
 @NgModule({
@@ -94,7 +96,9 @@ import { StatAdminHbgComponent } from './stat-admin-hbg/stat-admin-hbg.component
     ConsultlnAdminGeneralComponent,
     SickListComponent,
     LoginAdminComponent,
-    StatAdminHbgComponent
+    StatAdminHbgComponent,
+    DashboardContentComponent,
+    AdminContentComponent
   ],
   imports: [
     BrowserModule,

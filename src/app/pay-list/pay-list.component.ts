@@ -1,6 +1,7 @@
 import { AuthService } from './../services/auth.service';
 import { CreditService } from './../services/credit.service';
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-pay-list',
@@ -10,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class PayListComponent implements OnInit {
 Credit;
 real_data = [];
-
+dtOptions: DataTables.Settings = {};
+dtTrigger: Subject<any> = new Subject();
   constructor(private creditService: CreditService, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -21,25 +23,19 @@ real_data = [];
   getCredit() {
     this.creditService.getCreditAdmin().subscribe(
       (data) => {
+
         console.log(data);
         this.Credit = data;
+        this.dtTrigger.next();
+        
 
-        this.Credit.forEach(element => {
-          this.authService.FindUser(element.author).subscribe(
-            (success) => {
-              element.user = success;
-              this.real_data.push(element);
-            }, (err) => {
-              console.log(err);
-            }
-          );
-        });
 
         console.log(this.real_data);
       }, (err) => {
         console.log(err);
       }
     );
+    
   }
 
 }

@@ -1,21 +1,9 @@
-<app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid full-body">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidenav-admin-general></app-sidenav-admin-general>
-
-    </div>
-
-
-    <div class="col-md-9">
-      <h3>LISTE DES DEMANDES CONFIRMEES</h3>
+      <h1 style="text-align: left;" class="mt-4">LISTE DES DEMANDES CONFIRMEES</h1>
         <br>
         <br>
         <br>
-        <table datatable class="row-border hover">
+        <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
             <thead>
               <tr>
                 <th>Nom </th>
@@ -25,13 +13,13 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody *ngFor="let req of real_data" >
+            <tbody *ngFor="let req of req_done" >
               <tr>
                  <td>{{ req.user.first_name }}</td>
                  <td>{{ req.user.last_name }}</td>
-                 <td>{{ req.date_started }}</td>
-                 <td>{{ req.date_finish }}</td>
-                 <td><button (click)="getDetail(req._id)" data-toggle="modal" data-target="#exampleModalDetail" class="btn btn-warning">Voir Plus</button></td>
+                 <td>{{ req.request.date_started }}</td>
+                 <td>{{ req.request.date_finish }}</td>
+                 <td><button (click)="getDetail(req.request._id)" data-toggle="modal" data-target="#exampleModalDetail" class="btn btn-warning">Voir Plus</button></td>
               </tr>
 
 
@@ -39,7 +27,6 @@
           </table>
           <br>
 
-    </div>
 
     <!-- Modal -->
 <div class="modal fade" id="exampleModalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

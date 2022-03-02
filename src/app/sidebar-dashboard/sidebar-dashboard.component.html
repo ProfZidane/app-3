@@ -3,8 +3,8 @@
   <div class="col-md-12">
     <h5>ESATIC-HBG <i class="d-i material-icons">chevron_right</i></h5>
     <ul style="list-style: none;">
-      <li>- <a routerLink='/req-exit' style="color: white;">Créer Demandes</a> </li>
-      <li>- <a routerLink='/list-exit-request' style="color: white;">Historiques</a></li>
+      <li>- <a (click)="goToCreateRequest()" style="color: white; cursor: pointer;">Créer Demandes</a> </li>
+      <li>- <a (click)="goToHistoryRequest()" style="color: white; cursor: pointer;">Historiques</a></li>
     </ul>
   </div>
 </div>
@@ -14,8 +14,8 @@
   <div class="col-md-12">
     <h5>ESATIC-RST <i class="d-i material-icons">chevron_right</i></h5>
     <ul style="list-style: none;">
-      <li>- <a routerLink='/req-credit' style="color: white;">Demander Recharge </a></li>
-      <li>- <a routerLink="/list-credit" style="color: white;">Historiques</a></li>
+      <li>- <a (click)="goToRequestCredit()" style="color: white; cursor: pointer;">Demander Recharge </a></li>
+      <li>- <a (click)="goToHistoryRequestCredit()" style="color: white; cursor: pointer;">Historiques</a></li>
     </ul>
   </div>
 </div>

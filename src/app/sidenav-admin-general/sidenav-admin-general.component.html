@@ -3,9 +3,9 @@
   <div class="col-md-12">
     <h5>ESATIC-HBG <i class="d-i material-icons">chevron_right</i></h5>
     <ul style="list-style: none;">
-      <li>- <a routerLink='/list-request-nc-admin' style="color: white;">Demandes Non Confirmées</a> </li>
-      <li>- <a routerLink='/list-request-c-admin' style="color: white;">Demandes Confirmées</a> </li>
-      <li>- <a routerLink='/stat-hbg' style="color: white;">Statistiques</a></li>
+      <li>- <a (click)="goToListNoConfirmRequest()" style="color: white; cursor: pointer;">Demandes Non Confirmées</a> </li>
+      <li>- <a (click)="goToListConfirmRequest()" style="color: white; cursor: pointer;">Demandes Confirmées</a> </li>
+      <li>- <a (click)="goToStatisticsRequest()" style="color: white; cursor: pointer;">Statistiques</a></li>
     </ul>
   </div>
 </div>
@@ -15,24 +15,24 @@
   <div class="col-md-12">
     <h5>ESATIC-RST <i class="d-i material-icons">chevron_right</i></h5>
     <ul style="list-style: none;">
-      <li>- <a routerLink='/list-credit-admin' style="color: white;">Recharges Effectuées</a></li>
-      <li>- <a routerLink="/stat-credit-admin" style="color: white;">Statistiques Repas</a></li>
+      <li>- <a (click)="goToListCredit()" style="color: white; cursor: pointer;">Recharges Effectuées</a></li>
+      <li>- <a (click)="goToStatisticsCredit()" style="color: white; cursor: pointer;">Statistiques Repas</a></li>
       <!--<li>- <a routerLink="/stat-credit-admin" style="color: white;">Statistiques Recharge</a></li>-->
     </ul>
   </div>
 </div>
 
-<div class="row onglet">
+<!-- <div class="row onglet">
 
   <div class="col-md-12">
     <h5>ESATIC-MDC <i class="d-i material-icons">chevron_right</i></h5>
     <ul style="list-style: none;">
       <li>- <a routerLink="/list-medicalph-admin" style="color: white;">Livres des consultations</a> </li>
-      <!--<li>- <a routerLink="/req-med" style="color: white;">Livres des consultations en ligne</a> </li>
-      <li>- <a routerLink="/stat-med" style="color: white;">Statistiques</a></li>-->
+      <li>- <a routerLink="/req-med" style="color: white;">Livres des consultations en ligne</a> </li>
+      <li>- <a routerLink="/stat-med" style="color: white;">Statistiques</a></li>
     </ul>
   </div>
-</div>
+</div> -->
 
 <!--<div class="row onglet">
 

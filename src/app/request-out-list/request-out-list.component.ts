@@ -71,12 +71,12 @@ success_alert;
         // tslint:disable-next-line:variable-name
         const main_position = [5.2908528768090415, -3.998803087987915];
         // tslint:disable-next-line:variable-name
-        const sup_pos = [5.28, -3.998737];
+        const sup_pos = [37.8064948, 11.1815316];
         // tslint:disable-next-line:variable-name
-        const inf_pos = [5.30, -3.9987];
+        const inf_pos = [36.8064948, 10.1815316];
         // 5.291419, -3.998999  -- 5.289247, -3.998737 // 5.291546, -3.998787
         // tslint:disable-next-line:variable-name
-        if ((position.coords.latitude <= inf_pos[0] && position.coords.latitude >= sup_pos[0])) {
+        if ((position.coords.latitude >= inf_pos[0] && position.coords.latitude <= sup_pos[0])) {
 
             console.log('c la position');
            this.confirmation(id);
@@ -112,7 +112,8 @@ success_alert;
         this.success_alert = true;
         setTimeout( () => {
           this.success = true;
-          location.href = '/list-exit-request';
+          // location.href = '/list-exit-request';
+          this.ngOnInit();
         }, 2000);
       }, (err) => {
         console.log(err);

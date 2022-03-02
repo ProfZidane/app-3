@@ -1,20 +1,9 @@
-<app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid full-body">
-  <div class="row">
 
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidebar-dashboard></app-sidebar-dashboard>
-
-    </div>
-
-    <div class="col-md-9">
-
-        <div class="container">
-          <h2 class="pt-4" style="text-align: center;">Historique des recharges</h2>
+        <div class="container list-scroll">
+          <h1 class="pt-4" style="font-size: xx-large;">Historique des recharges</h1>
           <br>
-          <table datatable class="row-border hover">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
             <thead>
               <tr>
                 <th>ID</th>
@@ -34,7 +23,5 @@
           </table>
         </div>
 
-    </div>
 
-  </div>
-</div>
+

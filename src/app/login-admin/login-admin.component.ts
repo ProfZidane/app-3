@@ -10,12 +10,16 @@ Login = {
   username : '',
   password : ''
 };
+state = {
+  error : false
+};
   constructor() { }
 
   ngOnInit(): void {
   }
 
   LoginForm() {
+    this.state.error = false;
     console.log(this.Login);
 
     if (this.Login.username === 'admin' && this.Login.password === 'admin') {
@@ -45,6 +49,7 @@ Login = {
 
     } else {
       console.log('acces refusé !');
+      this.state.error = true;
     }
   }
 }

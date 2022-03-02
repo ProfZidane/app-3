@@ -46,6 +46,18 @@ warning_alert: any;
           this.success_alert = true;
           this.danger_alert = false;
           this.warning_alert = false;
+
+          this.OutInfo = {
+            author: '',
+            number_tutor: '',
+            bed_number: '',
+            date_started: '',
+            date_finish: '',
+            motivation: '',
+            status: 0,
+            created_at: new Date().toLocaleDateString(),
+            updated_at: ''
+          };
         }, 3000);
       }, (err) => {
         console.log(err);

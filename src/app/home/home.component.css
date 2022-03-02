@@ -2,8 +2,13 @@ button {
   border-radius: 50px;
 }
 
+.bord {
+  border: solid;
+}
+
 .full-body {
   height: 100vh;
+  width: 97.8%;
   padding: 0;
 
     background-image: url('https://image.freepik.com/vecteurs-libre/fond-blanc-hexagone-bleu-tech_1017-19366.jpg');

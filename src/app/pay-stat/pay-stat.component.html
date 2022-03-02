@@ -1,18 +1,6 @@
-<app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid full-body">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidenav-admin-general></app-sidenav-admin-general>
-
-    </div>
-
-
-    <div class="col-md-9">
       <br>
-        <h3>STATISTIQUE DES REPAS</h3>
+        <h1 style="text-align: left;">STATISTIQUE DES REPAS</h1>
         <br><br>
 
         <div class="row cadre">
@@ -26,7 +14,7 @@
             <h2 class="text-light" style="font-weight:200">{{ morning }}</h2>
             <p class="text-light"><b>Somme total :</b> &nbsp;{{ morning * 100 }} Fcfa</p>
           </div>
-          <div class="col-md-4 stat-card bg-success" >
+          <div class="col-md-4 stat-card bg-success" *ngIf="midi && soir">
             <h1 class="text-light" style="font-weight:200">Repas de midi/soir</h1>
             <h2 class="text-light" style="font-weight:200">{{ night }}</h2>
             <p class="text-light"><b>Somme total :</b> &nbsp;{{ night * 200 }} Fcfa</p>
@@ -81,4 +69,3 @@
 
     </div>
 
-    </div>

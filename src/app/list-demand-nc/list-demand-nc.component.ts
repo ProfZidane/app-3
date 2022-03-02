@@ -1,6 +1,7 @@
 import { RequestService } from './../services/request.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-list-demand-nc',
@@ -8,13 +9,15 @@ import { AuthService } from './../services/auth.service';
   styleUrls: ['./list-demand-nc.component.css']
 })
 export class ListDemandNcComponent implements OnInit {
-  req_done;
   req_not_done;
   real_data = [];
   detail;
   user;
   success;
   success_alert;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+
   constructor(private requestService: RequestService, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -29,19 +32,11 @@ export class ListDemandNcComponent implements OnInit {
       (data) => {
         //console.log(data);
         this.req_not_done = data;
-        //console.log(this.req_not_done[0]._id);
-        this.req_not_done.forEach(element => {
-          this.authService.FindUser(element.author).subscribe(
-            (success) => {
-              element.user = success;
-              this.real_data.push(element);
-            }, (err) => {
-              console.log(err);
-            }
-          );
-        });
+        console.log(this.req_not_done);
+        this.dtTrigger.next();
 
-        console.log(this.real_data);
+        
+        
 
       }, (err) => {
         console.log(err);

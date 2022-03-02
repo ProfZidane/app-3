@@ -1,23 +1,11 @@
-<app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid full-body">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidenav-admin-general></app-sidenav-admin-general>
-
-    </div>
-
-
-    <div class="col-md-9">
       <br>
       <h1>Statistiques Module Hébergement</h1>
       <hr>
       <div class="row">
         <div class="col-md-6">
           <h3 class="mt-2">Trie en fonction de la Date</h3>
-          <canvas id="myChart"  width="100" height="100"></canvas>
+          <canvas id="myChart"  width="100" height="90"></canvas>
         </div>
         <div class="col-md-6" *ngIf="motifs" id="motifs_coulisse">
           <h3 class="mt-2">Trie en fonction du motifs</h3>
@@ -31,5 +19,3 @@
         </div>
       </div>
 
-
-    </div>

@@ -77,6 +77,8 @@ export class RequestCredFormComponent implements OnInit {
           this.danger_alert = false;
           setTimeout( () => {
             this.success = true;
+            this.form_data.num = "";
+            this.form_data.somme = "";
           }, 3000);
         }, (err) => {
           console.log(err);

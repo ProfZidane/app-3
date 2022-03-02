@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar-dashboard',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  goToHistoryRequest() {
+    this.router.navigateByUrl('/dashboard/(child:list-exit-request)');
+  }
+
+  goToCreateRequest() {
+    this.router.navigateByUrl('/dashboard/(child:req-exit)');
+  }
+
+  goToRequestCredit() {
+    this.router.navigateByUrl('/dashboard/(child:req-credit)');
+  }
+
+  goToHistoryRequestCredit() {
+    this.router.navigateByUrl('/dashboard/(child:list-credit)');
   }
 
 }

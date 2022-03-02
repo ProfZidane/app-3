@@ -25,6 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DashboardContentComponent } from './dashboard-content/dashboard-content.component';
+import { AdminContentComponent } from './admin-content/admin-content.component';
 
 const routes: Routes = [
   {
@@ -33,25 +35,85 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardContentComponent,
+        outlet: 'child'
+      },
+      {
+        path: 'list-exit-request',
+        component: RequestOutListComponent,
+        outlet: 'child'
+      },
+      {
+        path: 'req-exit',
+        component: RequestOutFormComponent,
+        outlet: 'child'
+      },
+      {
+        path: 'req-credit',
+        component: RequestCredFormComponent,
+        outlet: 'child'
+      },
+      {
+        path: 'list-credit',
+        component: RequestCredListComponent,
+        outlet: 'child'
+      }
+    ]
   },
+  {
+    path: 'admin',
+    component: HomeAdminGeneralComponent,
+    children: [
+      {
+        path: '',
+        component: AdminContentComponent,
+        outlet: 'child2'
+      },
+      {
+        path: 'list-request-nc-admin',
+        component: ListDemandNcComponent,
+        outlet: 'child2'
+      },
+      {
+        path: 'list-request-c-admin',
+        component: ListDemandCComponent,
+        outlet: 'child2'
+      },
+      {
+        path: 'list-credit-admin',
+        component: PayListComponent,
+        outlet: 'child2'
+      },
+      {
+        path: 'stat-credit-admin',
+        component: PayStatComponent,
+        outlet: 'child2'
+      },
+      {
+        path: 'list-medicalph-admin',
+        component: SickListComponent,
+        outlet: 'child2'
+      },
+      {
+        path: 'stat-hbg',
+        component: StatAdminHbgComponent,
+        outlet: 'child2'
+      },
+      {
+        path: 'stat-med',
+        component: Stat1AdminMedComponent,
+        outlet: 'child2'
+      }
+       
+    ]
+  },
+  
+ 
 
-  {
-    path: 'list-exit-request',
-    component: RequestOutListComponent
-  },
-  {
-    path: 'req-exit',
-    component: RequestOutFormComponent
-  },
-  {
-    path: 'req-credit',
-    component: RequestCredFormComponent
-  },
-  {
-    path: 'list-credit',
-    component: RequestCredListComponent
-  },
   {
     path: 'req-med',
     component: RequestMedFormComponent
@@ -80,26 +142,7 @@ const routes: Routes = [
     path: 'consult-list',
     component: ConsultationHistoryComponent
   },
-  {
-    path: 'admin',
-    component: HomeAdminGeneralComponent
-  },
-  {
-    path: 'list-request-nc-admin',
-    component: ListDemandNcComponent
-  },
-  {
-    path: 'list-request-c-admin',
-    component: ListDemandCComponent
-  },
-  {
-    path: 'list-credit-admin',
-    component: PayListComponent
-  },
-  {
-    path: 'stat-credit-admin',
-    component: PayStatComponent
-  },
+  
   {
     path: 'list-medicalph-admin',
     component: SickListComponent
@@ -107,9 +150,6 @@ const routes: Routes = [
   {
     path: 'admin-login',
     component: LoginAdminComponent
-  }, {
-    path: 'stat-hbg',
-    component: StatAdminHbgComponent
   },
   {
     path: 'stat-med',

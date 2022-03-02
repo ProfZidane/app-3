@@ -1,17 +1,6 @@
 <mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
 
-<app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid full-body">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidebar-dashboard></app-sidebar-dashboard>
-
-    </div>
-
-    <div class="col-md-9">
       <br>
       <div class="alert alert-success" *ngIf="success_alert" >
         Votre confirmation est validé. Bonne arrivée à l'ESATIC !
@@ -22,7 +11,7 @@
       <div class="alert alert-danger" *ngIf="danger_alert" >
         Une erreur s'est produite. Veuillez réessayer plus tard !
       </div>
-      <h2 class="pt-4">Demandes de sorties</h2>
+      <h1 style="font-size: xx-large;" class="pt-4">Demandes de sorties</h1>
         <div class="container pt-2" *ngIf="req_not_done.length > 0" >
           <div class="card continious">
             <div class="card-body">
@@ -51,14 +40,14 @@
         </div>
         <!-- separation -->
         <div class="container pt-2 history" *ngIf="req_done && req_done.length > 0" >
-          <div class="card ">
+          <div class="card " *ngFor="let req of req_done">
             <div class="card-body">
-              <h5 class="card-title">Demande du <b>{{ req_done[0].created_at }}</b> &nbsp;&nbsp; <span class="badge badge-success text-light">Validé</span></h5>
+              <h5 class="card-title">Demande du <b>{{ req.created_at }}</b> &nbsp;&nbsp; <span class="badge badge-success text-light">Validé</span></h5>
               <p class="card-text">
-                Sortie pour aller voir ma famille et mes amis pour le weekend
+                {{ req.motivation }}
               </p>
               <hr>
-              <a (click)='getDetail(req_done[0]._id)' data-toggle="modal" data-target="#exampleModal2" class="card-link btn btn-muted">Voir détails</a>
+              <a (click)='getDetail(req._id)' data-toggle="modal" data-target="#exampleModal2" class="card-link btn btn-muted">Voir détails</a>
             </div>
           </div>
 
@@ -116,10 +105,8 @@
           <br>
         </div>
 
-    </div>
 
-  </div>
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalD1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

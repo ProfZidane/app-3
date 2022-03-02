@@ -1,6 +1,7 @@
 import { CreditService } from './../services/credit.service';
 import { Component, OnInit } from '@angular/core';
 import { data } from 'jquery';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-request-cred-list',
@@ -9,6 +10,9 @@ import { data } from 'jquery';
 })
 export class RequestCredListComponent implements OnInit {
 rechargement;
+dtOptions: DataTables.Settings = {};
+dtTrigger: Subject<any> = new Subject();
+
   constructor(private creditService: CreditService) { }
 
   ngOnInit(): void {
@@ -21,6 +25,8 @@ rechargement;
       (data) => {
         console.log(data);
         this.rechargement = data;
+        this.dtTrigger.next();
+
       }, (err) => {
         console.log(err);
       }

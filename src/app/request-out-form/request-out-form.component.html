@@ -1,17 +1,6 @@
 <mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
 
-<app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid full-body">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidebar-dashboard></app-sidebar-dashboard>
-
-    </div>
-
-    <div class="col-md-9">
 
       <div class="container">
         <br>
@@ -24,7 +13,7 @@
         <div class="alert alert-warning" *ngIf="warning_alert" >
           Une demande de vous est déjà en cours !
         </div>
-        <h2 style="text-align:center;" class="pt-4">Formulaire de sortie de cité</h2>
+        <h1 style="font-size: xx-large;" class="pt-4">Demande de sortie de cité</h1>
         <form class="pt-4">
           <div class="form-row pt-3">
             <div class="col">
@@ -61,7 +50,5 @@
         </form>
       </div>
 
-    </div>
 
-  </div>
-</div>
+

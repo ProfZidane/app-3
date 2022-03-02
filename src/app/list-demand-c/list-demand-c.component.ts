@@ -1,6 +1,7 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from './../services/request.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-list-demand-c',
@@ -9,10 +10,11 @@ import { RequestService } from './../services/request.service';
 })
 export class ListDemandCComponent implements OnInit {
   req_done;
-  req_not_done;
   detail;
   user;
   real_data = [];
+  dtTrigger: Subject<any> = new Subject();
+
   constructor(private requestService: RequestService, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -24,8 +26,8 @@ export class ListDemandCComponent implements OnInit {
       (data) => {
         console.log(data);
         this.req_done = data;
-
-        this.req_done.forEach(element => {
+        this.dtTrigger.next();
+        /* this.req_done.forEach(element => {
           console.log(element);
           this.authService.FindUser(element.author).subscribe(
             (success) => {
@@ -35,7 +37,7 @@ export class ListDemandCComponent implements OnInit {
               console.log(err);
             }
           );
-        });
+        }); */
         /*console.log(this.req_done[0]._id);
 
         this.requestService.GetDetailRequest({
@@ -49,7 +51,6 @@ export class ListDemandCComponent implements OnInit {
             console.log(err);
           }
         );*/
-        console.log(this.real_data);
 
       }, (err) => {
         console.log(err);

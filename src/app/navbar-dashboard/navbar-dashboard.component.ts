@@ -1,6 +1,7 @@
 import { RequestService } from './../services/request.service';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-navbar-dashboard',
   templateUrl: './navbar-dashboard.component.html',
@@ -36,6 +37,7 @@ role;
       this.role = localStorage.getItem('role');
     }
   }
+
 
   Logout() {
     if (localStorage.getItem('userToken') !== null) {

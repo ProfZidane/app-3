@@ -1,28 +1,17 @@
 <mat-progress-bar *ngIf="success==false"  mode="indeterminate"></mat-progress-bar>
 
-<app-navbar-dashboard></app-navbar-dashboard>
-
-<div class="container-fluid full-body">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidenav-admin-general></app-sidenav-admin-general>
-
-    </div>
 
 
-    <div class="col-md-9">
       <br>
       <div class="alert alert-success" *ngIf="success_alert" >
         Demande d'explications envoyé !
       </div>
       <br>
-      <h3>LISTE DES DEMANDES NON CONFIRMEES</h3>
+      <h1 style="text-align: left;">LISTE DES DEMANDES NON CONFIRMEES</h1>
         <br>
         <br>
         <br>
-        <table datatable class="row-border hover">
+        <table  class="row-border hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
             <thead>
               <tr>
                 <th>Nom </th>
@@ -33,13 +22,13 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody *ngFor="let req of real_data" >
+            <tbody *ngFor="let req of req_not_done" >
               <tr>
                 <td>{{ req.user.first_name }}</td>
                 <td>{{ req.user.last_name }}</td>
-                <td>{{ req.date_started }}</td>
-                <td>{{ req.date_finish }}</td>
-                <td><button (click)="getDetail(req._id)" data-toggle="modal" data-target="#exampleModalDetail"  class="btn btn-warning">Voir Plus</button></td>
+                <td>{{ req.request.date_started }}</td>
+                <td>{{ req.request.date_finish }}</td>
+                <td><button (click)="getDetail(req.request._id)" data-toggle="modal" data-target="#exampleModalDetail"  class="btn btn-warning">Voir Plus</button></td>
                 <td><button class="btn btn-info" (click)='SendExplication(req.user._id)'>Explications</button></td>
               </tr>
 
@@ -47,7 +36,6 @@
           </table>
           <br>
 
-    </div>
 
 
         <!-- Modal -->

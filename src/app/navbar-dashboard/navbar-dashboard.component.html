@@ -10,13 +10,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto nv-2">
 
-      <li class="nav-item dropdown" style="margin-right: 4rem;" *ngIf="!isRole" >
-        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="messages" >
+      <li class="nav-item dropdown" style="margin-right: 7rem; margin-left: 8rem;" *ngIf="!isRole" >
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="messages" style="cursor: pointer;">
           <i class="material-icons text-primary">mail</i>({{ messages.length }})
           <!--<i class="material-icons">notifications_active</i>-->
         </a>
         <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >
-          <a class="dropdown-item"  *ngFor="let message of messages">
+          <a class="dropdown-item"  *ngFor="let message of messages" style="cursor: pointer;">
               <b>KADJO</b>: <small style="font-style: italic;"  data-toggle="modal" data-target="#exampleModalExplication" (click)="DetailMessage(message)">{{ message.message | slice:0:34 }}...</small>
           </a>
           <a class="dropdown-item"  *ngIf="messages.length <= 0" >
@@ -63,9 +63,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Voir le profil</a>
-          <a class="dropdown-item" href="#">Contactez-nous</a>
+          <!-- <a class="dropdown-item" href="#">Contactez-nous</a> -->
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" (click)="Logout()">Déconnexion</a>
+          <a class="dropdown-item text-danger" style="cursor: pointer;" (click)="Logout()">Déconnexion</a>
         </div>
       </li>
 

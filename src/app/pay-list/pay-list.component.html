@@ -1,21 +1,9 @@
-<app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid full-body">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary sidebar">
-
-      <app-sidenav-admin-general></app-sidenav-admin-general>
-
-    </div>
-
-
-    <div class="col-md-9">
       <br>
-      <h3>LISTE DES PAIEMENTS</h3>
+      <h1 style="text-align: left;" class="mt-3">LISTE DES PAIEMENTS</h1>
         <br>
         <br>
-        <table datatable class="row-border hover">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
             <thead>
               <tr>
                 <th>ID</th>
@@ -25,13 +13,13 @@
                 <th>Montant</th>
               </tr>
             </thead>
-            <tbody *ngFor="let credit of real_data" >
+            <tbody *ngFor="let credit of Credit" >
               <tr>
-                <td>{{ credit._id }}</td>
+                <td>{{ credit.credit._id }}</td>
                  <td>{{ credit.user.first_name }}</td>
                  <td>{{ credit.user.last_name }}</td>
-                 <td>{{ credit.created_at }}</td>
-                 <td>{{ credit.somme }}</td>
+                 <td>{{ credit.credit.created_at }}</td>
+                 <td>{{ credit.credit.somme | number }} Fcfa</td>
 
               </tr>
 
@@ -39,4 +27,3 @@
           </table>
           <br>
 
-    </div>
